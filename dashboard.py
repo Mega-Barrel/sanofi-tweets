@@ -12,12 +12,20 @@ st.set_page_config(layout="wide")
 st.title('Sanofi Tweets Analysis')
 
 files = [
-    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/indiasanofi_data.csv',
-    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofibrasil_data.csv',
-    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofide_data.csv',
-    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofifr_data.csv',
-    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofius_data.csv'
+    'IndiaSanofi',
+    'SanofiBrasil',
+    'SanofiDE',
+    'SanofiFR',
+    'SanofiUS'
 ]
+
+sanofi_dict = {
+    'IndiaSanofi': './data/clean_data/indiasanofi_data.csv',
+    'SanofiBrasil': '/data/clean_data/sanofibrasil_data.csv',
+    'SanofiDE': './data/clean_data/sanofide_data.csv',
+    'SanofiFR': './data/clean_data/sanofifr_data.csv',
+    'SanofiUS': './data/clean_data/sanofius_data.csv'
+}
 
 option = st.selectbox(
     'Please slect any 1 file for analysis',
@@ -32,10 +40,8 @@ def read_file(filename):
 
 if st.button('Generate Analysis'):
     # read file
-    df = read_file(option)
-    
-    file_name = option.split('/')[9].split('.')[0]
-    
+    df = read_file(sanofi_dict[option])
+        
     col1, col2, col3, col4, col5 = st.columns(5)
     
     col1.metric('Total Tweets', value=len(df))
