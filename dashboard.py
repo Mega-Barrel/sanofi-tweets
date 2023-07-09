@@ -12,11 +12,11 @@ st.set_page_config(layout="wide")
 st.title('Sanofi Tweets Analysis')
 
 files = [
-    './data/clean_data/indiaSanofi_data.csv',
-    './data/clean_data/sanofiBrasil_data.csv',
-    './data/clean_data/sanofiDE_data.csv',
-    './data/clean_data/sanofiFR_data.csv',
-    './data/clean_data/sanofiUS_data.csv'
+    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/indiasanofi_data.csv',
+    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofibrasil_data.csv',
+    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofide_data.csv',
+    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofifr_data.csv',
+    'https://github.com/Mega-Barrel/sanofi-tweets/blob/main/data/clean_data/sanofius_data.csv'
 ]
 
 option = st.selectbox(
@@ -34,7 +34,7 @@ if st.button('Generate Analysis'):
     # read file
     df = read_file(option)
     
-    file_name = option.split('/')[2].split('_')[1]
+    file_name = option.split('/')[9].split('.')[0]
     
     col1, col2, col3, col4, col5 = st.columns(5)
     
